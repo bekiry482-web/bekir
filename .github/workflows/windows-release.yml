@@ -20,12 +20,16 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build:windows
-      - run: npm run build:installer
+      - name: Kurulum dosyasını oluştur
+        id: installer
+        continue-on-error: true
+        run: npm run build:installer
       - name: Windows paketlerini yayımla
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          INSTALLER_OUTCOME: ${{ steps.installer.outcome }}
         run: |
           $version = node -p "require('./package.json').version"
           $tag = "v$version"
@@ -34,5 +38,10 @@ jobs:
             gh release create $tag --target $env:GITHUB_SHA --title "Fizyo Takip $version - Windows" --notes-file .github/windows-release-notes.md
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }
-          gh release upload $tag "release/Fizyo-Takip-Windows-$version.zip" "release/Fizyo-Takip-Kurulum-$version.exe" --clobber
-          exit $LASTEXITCODE
+          gh release upload $tag "release/Fizyo-Takip-Windows-$version.zip" --clobber
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if ($env:INSTALLER_OUTCOME -eq "success") {
+            gh release upload $tag "release/Fizyo-Takip-Kurulum-$version.exe" --clobber
+            exit $LASTEXITCODE
+          }
+          exit 0

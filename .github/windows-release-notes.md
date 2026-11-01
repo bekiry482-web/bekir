@@ -1,6 +1,6 @@
 ## Windows 10 / 11 (64 bit)
 
-**Kolay kurulum:** `Fizyo-Takip-Kurulum-1.1.0.exe` dosyasını indirin ve çalıştırın. Masaüstü kısayolu oluşturulur.
+**Kurulum dosyası varsa:** `Fizyo-Takip-Kurulum-1.1.0.exe` dosyasını indirin ve çalıştırın. Masaüstü kısayolu oluşturulur.
 
 **Kurulumsuz kullanım:** `Fizyo-Takip-Windows-1.1.0.zip` dosyasını indirin. Sağ tık → Tümünü ayıkla, ardından çıkarılan klasördeki `Fizyo Takip.exe` dosyasını açın. EXE yanındaki dosyaları ayırmayın.
 
