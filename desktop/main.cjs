@@ -15,7 +15,7 @@ function openWindow() {
   Menu.setApplicationMenu(Menu.buildFromTemplate([
     {label: 'Dosya', submenu: [{label: 'Çıkış', role: 'quit'}]},
     {label: 'Görünüm', submenu: [{label: 'Büyüt', role: 'zoomIn'}, {label: 'Küçült', role: 'zoomOut'}, {label: 'Varsayılan boyut', role: 'resetZoom'}]},
-    {label: 'Yardım', submenu: [{label: 'Fizyo Takip hakkında', click: () => dialog.showMessageBox(window, {type: 'info', title: 'Fizyo Takip', message: 'Fizyo Takip', detail: 'Hasta ve seans takibi · 1.0.0\n\nİnternet bağlantısı gerekmez. Kayıtlar bu Windows kullanıcısının uygulama veri alanında saklanır. Düzenli yedek alın. Veriler ve yedekler şifrelenmemiştir.\n\nTarayıcı sürümündeki kayıtlar otomatik aktarılmaz. Önce Yedek indir, ardından masaüstü uygulamasında Yedekten geri yükle seçeneklerini kullanın.'})}]}
+    {label: 'Yardım', submenu: [{label: 'Fizyo Takip hakkında', click: () => dialog.showMessageBox(window, {type: 'info', title: 'Fizyo Takip', message: 'Fizyo Takip', detail: 'Hasta ve seans takibi · 1.1.0\n\nİnternet bağlantısı gerekmez. Kayıtlar bu Windows kullanıcısının uygulama veri alanında saklanır. Düzenli yedek alın. Veriler ve yedekler şifrelenmemiştir.\n\nTarayıcı sürümündeki kayıtlar otomatik aktarılmaz. Önce Yedek indir, ardından masaüstü uygulamasında Yedekten geri yükle seçeneklerini kullanın.'})}]}
   ]));
   window.webContents.setWindowOpenHandler(() => ({action: 'deny'}));
   window.webContents.on('will-navigate', event => event.preventDefault());

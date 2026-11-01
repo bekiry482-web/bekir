@@ -16,10 +16,14 @@ Veriler bu tarayıcının yerel depolamasındadır; sunucuya gönderilmez. Gizli
 
 ## Windows 10 / 11 masaüstü sürümü
 
-`release/Fizyo-Takip-Windows-1.0.0.zip` Windows x64 uygulama paketidir. ZIP dosyasını **Tümünü ayıkla** ile bir klasöre çıkarın. Klasör içindeki **Fizyo Takip.exe** dosyasını açın. EXE yanındaki dosyalarla birlikte kalmalıdır; yalnızca EXE dosyasını taşımayın. İsterseniz EXE üzerine sağ tıklayıp masaüstü kısayolu oluşturun. Uygulama ayrı pencerede açılır; Python, Node.js veya internet gerektirmez.
+`release/Fizyo-Takip-Windows-1.1.0.zip` Windows x64 uygulama paketidir. ZIP dosyasını **Tümünü ayıkla** ile bir klasöre çıkarın. Klasör içindeki **Fizyo Takip.exe** dosyasını açın. EXE yanındaki dosyalarla birlikte kalmalıdır; yalnızca EXE dosyasını taşımayın. İsterseniz EXE üzerine sağ tıklayıp masaüstü kısayolu oluşturun. Uygulama ayrı pencerede açılır; Python, Node.js veya internet gerektirmez.
 
 İmza sertifikası eklenmediği için Windows yayıncıyı doğrulayamayabilir. Windows çalıştırma testi bu Linux ortamında yapılamadı. NSIS kurulum oluşturma denemesi Wine bulunmadığı için tamamlanamadı; ZIP sürümü kurulum gerektirmez.
 
 Kayıtlar Windows kullanıcısının `%APPDATA%/Fizyo Takip` alanında saklanır. Önceki tarayıcı kayıtları kendiliğinden taşınmaz: tarayıcı sürümünde **Yedek indir**, masaüstü sürümünde **Yedekten geri yükle** kullanın. Güncelleme veya kaldırma öncesi yedek alın.
 
 Geliştirici için: `npm ci` ardından `npm run desktop` masaüstü sürümünü başlatır. `npm run build:windows` Windows x64 ZIP paketini üretir. `npm run build:installer` NSIS kurulumunu üretir; Windows veya Wine gerektirir. Paket üretimi araçları indirirken internet kullanır; uygulamanın çalışması internet gerektirmez. `npm run build:html` tek dosyalık sürümü kaynaklardan günceller.
+
+## TC kimlik ve tema
+
+TC kimlik numarası isteğe bağlıdır; girildiğinde 11 rakam biçimi kontrol edilir. Resmi kimlik doğrulaması yapılmaz. Eski yedeklerde TC alanı bulunması gerekmez. Sol menüdeki **Koyu tema / Açık tema** düğmesi görünümü değiştirir; tercih aynı cihazda saklanır. TC bilgisi de yedeklere dahil edilir.
