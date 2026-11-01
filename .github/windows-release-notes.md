@@ -1,16 +1,11 @@
-## Windows 10 / 11 (64 bit)
+## Fizyo Takip 1.2.0 · Windows 10 / 11 (64 bit)
 
-**Kurulum dosyası varsa:** `Fizyo-Takip-Kurulum-1.1.0.exe` dosyasını indirin ve çalıştırın. Masaüstü kısayolu oluşturulur.
+ZIP dosyasını indirin, sağ tık → **Tümünü ayıkla** ile çıkarın ve klasördeki **Fizyo Takip.exe** dosyasını açın. Yanındaki dosyaları ayırmayın. Ek program veya internet gerekmez. Kurulum EXE dosyası da listelenmişse alternatif olarak kullanılabilir.
 
-**Kurulumsuz kullanım:** `Fizyo-Takip-Windows-1.1.0.zip` dosyasını indirin. Sağ tık → Tümünü ayıkla, ardından çıkarılan klasördeki `Fizyo Takip.exe` dosyasını açın. EXE yanındaki dosyaları ayırmayın.
+### Excel raporu
+Sol menüden **Excel’e dışa aktar** seçin, haftayı belirleyip `.xlsx` dosyasını indirin. Uygulamanın açık/koyu temasına uygun renklerle dört sayfa hazırlanır: **Genel bakış**, **Haftalık takip**, **Hasta bilgileri**, **Seans geçmişi**. Günlük ve haftalık seans sayıları, paket ilerlemesi, notlar, doktor ve TC kimlik bilgileri yer alır. Excel’de filtreler ve sabitlenmiş başlıklar bulunur.
 
-İnternet, Python veya Node.js gerekmez. Hasta bilgileri, tedavi planı, 3–8 haftalık paketler, seans notları ve paket bitiş uyarıları bulunur. Uyarılar uygulama açıkken görünür.
+### Önceki özellikler
+TC kimlik numarası, açık/koyu tema, tedavi planları, 3–8 haftalık paketler ve seans uyarıları korunur.
 
-Kayıtlar cihazda saklanır. Düzenli olarak **Yedek indir** kullanın. Tarayıcı sürümündeki verileri taşımak için yedeği masaüstü sürümünde geri yükleyin. Veriler ve yedekler şifrelenmemiştir. Uygulama dijital imzalı değildir; Windows yayıncıyı doğrulayamayabilir.
-
-Paketler GitHub'ın Windows makinesinde oluşturulur. Gerçek Windows cihazında etkileşimli kullanım testi henüz yapılmamıştır.
-
-## Bu sürümde
-- İsteğe bağlı TC kimlik numarası alanı (11 rakam biçim kontrolü; resmi kimlik doğrulaması yapmaz).
-- Açık / koyu tema ve kaydedilen tema tercihi.
-- Eski yedeklerle uyum korunur.
+Güncellemeden önce eski uygulamada **Yedek indir** kullanın. Yeni sürümde kayıtlar görünmüyorsa JSON yedeğini **Yedekten geri yükle** ile açın. Excel dosyası rapordur; geri yükleme yedeği değildir. Veriler cihazda saklanır, rapor ve yedekler şifrelenmemiştir. Uygulama dijital imzalı değildir. Gerçek Windows cihazında etkileşimli kullanım testi henüz yapılmamıştır.

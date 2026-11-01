@@ -1,3 +1,4 @@
+import {createExcelReport,mondayOf} from './excel-report.js';
 import {localDate,endDate,total,status,validPatient} from './domain.js';
 const $=s=>document.querySelector(s), key='fizyo.patients.v1';
 let patients=[],view='dashboard',filter='all';
@@ -26,3 +27,8 @@ $('#today').textContent=new Date().toLocaleDateString('tr-TR',{day:'numeric',mon
 function applyTheme(theme){document.documentElement.dataset.theme=theme;const button=$('#theme-toggle');button.textContent=theme==='dark'?'☀ Açık tema':'☾ Koyu tema';button.setAttribute('aria-pressed',String(theme==='dark'));}
 applyTheme(document.documentElement.dataset.theme==='dark'?'dark':'light');
 $('#theme-toggle').onclick=()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';applyTheme(theme);try{localStorage.setItem('fizyo.theme',theme)}catch{toast('Tema değişti ancak tercih bu cihazda kaydedilemedi.')}};
+
+$('#excel-export').onclick=()=>{if(!patients.length){toast('Excel raporu için önce bir hasta ekleyin.');return}$('#excel-week').value=localDate();updateExcelRange();$('#excel-dialog').showModal()};
+function updateExcelRange(){const selected=$('#excel-week').value;if(!selected)return;const start=mondayOf(selected);const finish=new Date(start+'T12:00:00');finish.setDate(finish.getDate()+6);$('#excel-range').textContent=`Rapor haftası: ${date(start)} – ${date(localDate(finish))}`;}
+$('#excel-week').onchange=updateExcelRange;
+$('#excel-form').onsubmit=async event=>{event.preventDefault();const button=$('#excel-download');button.disabled=true;button.textContent='Hazırlanıyor…';try{const week=mondayOf($('#excel-week').value);const workbook=createExcelReport(window.ExcelJS,patients,{week,theme:document.documentElement.dataset.theme});const buffer=await workbook.xlsx.writeBuffer();const blob=new Blob([buffer],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=`fizyo-haftalik-takip-${week}.xlsx`;link.click();setTimeout(()=>URL.revokeObjectURL(url),10000);$('#excel-dialog').close();toast('Excel raporu hazırlandı.')}catch(error){console.error('Excel raporu oluşturulamadı.');toast('Excel raporu hazırlanamadı. Tekrar deneyin.')}finally{button.disabled=false;button.textContent='Excel dosyasını indir'}};
