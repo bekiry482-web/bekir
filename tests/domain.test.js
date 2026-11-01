@@ -1,0 +1,5 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {endDate,total,status,validPatient} from '../domain.js';
+const patient={id:'1',name:'Ayşe',start:'2026-11-01',weeks:3,weekly:2,sessions:[],phone:'',doctor:'',purpose:'',condition:'',medication:'no',medicationName:'',chronic:'no',chronicName:'',surgeries:'',plan:''};
+test('3–8 hafta paket bitişi ve seans sayısı',()=>{for(let weeks=3;weeks<=8;weeks++){const p={...patient,weeks};assert.equal(total(p),weeks*2);assert.equal((Date.parse(endDate(p))-Date.parse(p.start))/86400000,weeks*7)}});
+test('seans ve süre uyarıları',()=>{assert.equal(status(patient,'2026-11-01'),'active');assert.equal(status({...patient,sessions:Array(4).fill({})},'2026-11-02'),'soon');assert.equal(status({...patient,sessions:Array(6).fill({})},'2026-11-02'),'completed');assert.equal(status(patient,'2026-11-22'),'expired')});
+test('yedek doğrulama ve paket sınırları',()=>{assert.ok(validPatient(patient));assert.ok(!validPatient({...patient,weeks:9}));assert.ok(!validPatient({...patient,weekly:0}));assert.ok(!validPatient({...patient,name:' '}));assert.ok(!validPatient({...patient,sessions:[{}]}))});

@@ -1,0 +1,53 @@
+{
+  "name": "fizyo-takip",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 3000 --bind 0.0.0.0",
+    "test": "node --test tests/*.test.js",
+    "build:html": "node scripts/build-html.mjs",
+    "desktop": "npm run build:html && electron .",
+    "build:windows": "npm run build:html && electron-builder --win zip --x64",
+    "build:installer": "npm run build:html && electron-builder --win nsis --x64"
+  },
+  "type": "module",
+  "description": "İnternetsiz hasta ve fizyoterapi seans takibi",
+  "author": "Fizyo Takip",
+  "main": "desktop/main.cjs",
+  "devDependencies": {
+    "electron": "45.2.1",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "com.fizyo.takip",
+    "productName": "Fizyo Takip",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "Fizyo.html",
+      "desktop/main.cjs",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "zip"
+      ],
+      "signAndEditExecutable": false,
+      "artifactName": "Fizyo-Takip-Windows-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": [
+        "tr_TR"
+      ],
+      "language": "1055",
+      "artifactName": "Fizyo-Takip-Kurulum-${version}.${ext}"
+    }
+  }
+}
